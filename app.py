@@ -29,16 +29,20 @@ option_values = [
     for s in stock_range
 ]
 payoff_at_expiration = np.maximum(stock_range - K, 0) if option_type == 'call' else np.maximum(K - stock_range, 0)
+profit_at_expiration = option_values - price
 
 simulation_data = pd.DataFrame(
     {
         "Stock Price": stock_range,
         "Option Price": option_values,
-        "Payoff at Expiration": payoff_at_expiration
+        "Payoff at Expiration": payoff_at_expiration,
+        "Profit at Expiration": profit_at_expiration
     }
 )
 
 st.header("Graphs")
+
+st.line_chart(simulation_data, x="Stock Price")
 
 tab1, tab2 = st.tabs(["Payoff at Expiration", "Option Price vs Stock Price"])
 
