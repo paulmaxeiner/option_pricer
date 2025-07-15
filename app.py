@@ -5,6 +5,7 @@ from black_scholes import black_scholes_price
 
 st.title("Option Pricer")
 st.sidebar.title("Navigation")
+st.sidebar.markdown("A simple option pricing tool using the Black-Scholes model.")
 
 model = st.selectbox("Model", ["Black-Scholes"])
 
